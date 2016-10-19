@@ -57,4 +57,8 @@ public class Point2D<T> {
         result = 31 * result + y.hashCode();
         return result;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
