@@ -1,48 +1,44 @@
 package by.bsu.polygon.entity;
 
+import by.bsu.polygon.entity.point.Point;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by User on 19.10.2016.
+ * @author Irina Terlizhenko
+ * @date 19.10.2016
  */
-public class Polygon<T> {
-    private List<Point2D<T>> points;
+public class Polygon {
+    private List<Point> points;
 
     public Polygon() {
+        points = new ArrayList<>();
     }
 
-    public Polygon(List<Point2D<T>> points) {
+    public Polygon(List<Point> points) {
         this.points = points;
     }
 
-    public List<Point2D<T>> getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    public void setPoints(List<Point2D<T>> points) {
+    public void setPoints(List<Point> points) {
         this.points = points;
     }
 
-    @Override
-    public String toString() {
-        return "Polygon{" +
-                "points=" + points +
-                '}';
+    public List<Segment> toSegmentList() {
+        List<Segment> segments = new ArrayList<>();
+        Point prev = points.get(points.size() - 1);
+        for (Point pt : points) {
+            segments.add(new Segment(prev, pt));
+            prev = pt;
+        }
+        return segments;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Polygon<?> polygon = (Polygon<?>) o;
-
-        return points != null ? points.equals(polygon.points) : polygon.points == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        return points != null ? points.hashCode() : 0;
+    public int length() {
+        return points.size();
     }
 }
