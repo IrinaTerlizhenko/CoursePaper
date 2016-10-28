@@ -31,7 +31,7 @@ public class PolygonReader {
     public Polygon read() throws IOException {
         ArrayList<Point> points = new ArrayList<>();
         String line = reader.readLine();
-        while (!"S".equals(line) && !"s".equals(line)) {
+        while (!line.isEmpty() && !"S".equals(line) && !"s".equals(line)) {
             String[] split = line.split(" ");
             int x = Integer.parseInt(split[0]);
             int y = Integer.parseInt(split[1]);
