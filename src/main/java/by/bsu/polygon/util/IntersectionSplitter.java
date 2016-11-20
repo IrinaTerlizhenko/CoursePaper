@@ -43,7 +43,7 @@ public class IntersectionSplitter {
 
             while (!polygonPoints.get(0).equals(curr)) {
                 while (!(curr instanceof IntersectionPoint)) {
-                    curr = points.get(polygonDirection? i + 1 : i - 1);
+                    curr = points.get(polygonDirection ? i + 1 : i - 1);
                     used.set(polygonDirection ? i : i - 1, true);
                     // for polygons without self-intersections
                     /*
@@ -84,8 +84,8 @@ public class IntersectionSplitter {
             if (i == 0) {
                 directions[0] = 0;
             } else {
-                directions[i] = directions[i-1] + 1;
-                if (!(segments.get(i-1).q instanceof IntersectionPoint)) {
+                directions[i] = directions[i - 1] + 1;
+                if (!(segments.get(i - 1).q instanceof IntersectionPoint)) {
                     ++directions[i];
                 }
             }
