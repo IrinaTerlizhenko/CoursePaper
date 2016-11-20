@@ -31,6 +31,22 @@ public class Segment implements Comparable<Segment> {
         return p.y + (q.y - p.y) * (x - p.x) / (q.x - p.x);
     }
 
+    public boolean isRight(Point pt) {
+        return (pt.x - p.x) * (q.y - p.y) - (pt.y - p.y) * (q.x - p.x) > 0;
+    }
+
+    public boolean isLeft(Point pt) {
+        return (pt.x - p.x) * (q.y - p.y) - (pt.y - p.y) * (q.x - p.x) < 0;
+    }
+
+    public boolean isSubsegmentOf(Segment seg) {
+        return abs((p.x - q.x) / (p.y - q.y) - (seg.p.x - seg.q.x) / (seg.p.y - seg.q.y)) < EPS
+                && (p.x <= max(seg.p.x, seg.q.x))
+                && (p.x >= min(seg.p.x, seg.q.x))
+                && (p.y <= max(seg.p.y, seg.q.y))
+                && (p.y >= min(seg.p.y, seg.q.y));
+    }
+
     @Override
     public int compareTo(Segment o) {
         double x = max(min(p.x, q.x), min(o.p.x, o.q.x));

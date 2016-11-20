@@ -10,6 +10,10 @@ public class Point {
     public Point() {
     }
 
+    public Point(double x) {
+        this.x = x;
+    }
+
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
@@ -30,8 +34,7 @@ public class Point {
 
         Point point = (Point) o;
 
-        if (Double.compare(point.x, x) != 0) return false;
-        return Double.compare(point.y, y) == 0;
+        return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
 
     }
 

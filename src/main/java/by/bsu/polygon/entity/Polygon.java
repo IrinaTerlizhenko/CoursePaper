@@ -30,11 +30,15 @@ public class Polygon {
 
     public List<Segment> toSegmentList() {
         List<Segment> segments = new ArrayList<>();
-        Point prev = points.get(points.size() - 1);
+        /*Point prev = points.get(points.size() - 1);
         for (Point pt : points) {
             segments.add(new Segment(prev, pt));
             prev = pt;
+        }*/
+        for (int i = 0; i < length() - 1; i++) {
+            segments.add(new Segment(points.get(i), points.get(i + 1)));
         }
+        segments.add(new Segment(points.get(points.size() - 1), points.get(0)));
         return segments;
     }
 

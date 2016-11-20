@@ -19,10 +19,10 @@ public class PolygonReaderTest {
         PolygonReader reader = new PolygonReader("/input.txt");
         Polygon polygon = reader.read();
         List<Point> points = new ArrayList<>();
-        points.add(new Point(0,0));
-        points.add(new Point(1,1));
-        points.add(new Point(1,2));
-        points.add(new Point(2,1));
+        points.add(new Point(0, 1));
+        points.add(new Point(0, 0));
+        points.add(new Point(1, 1));
+        points.add(new Point(1, 0));
         Polygon expected = new Polygon(points);
         Assert.assertEquals(expected, polygon);
     }
