@@ -6,17 +6,17 @@ import by.bsu.polygon.entity.point.IntersectionPoint;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * @author User
  * @date 28.10.2016
  */
 public class DirectedIntersection {
-    static List<PriorityQueue<IntersectionPoint>> findDirectedIntersections(Polygon polygon) {
-        ArrayList<PriorityQueue<IntersectionPoint>> directedIntersections = new ArrayList<>();
+    static List<TreeSet<IntersectionPoint>> findDirectedIntersections(Polygon polygon) {
+        List<TreeSet<IntersectionPoint>> directedIntersections = new ArrayList<>();
         for (int i = 0; i < polygon.length(); i++) {
-            directedIntersections.add(new PriorityQueue<>((o1, o2) -> {
+            directedIntersections.add(new TreeSet<>((o1, o2) -> {
                 if (o1.x == o2.x) {
                     return 0;
                 }
@@ -35,7 +35,7 @@ public class DirectedIntersection {
     private static void findAllIntersections(
             Segment segment,
             List<Segment> segmentList,
-            List<PriorityQueue<IntersectionPoint>> directedIntersections,
+            List<TreeSet<IntersectionPoint>> directedIntersections,
             int i) {
         for (int j = i + 2; j < segmentList.size(); j++) {
             if (i == 0 && j == segmentList.size() - 1) {

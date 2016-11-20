@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * @author User
@@ -21,7 +21,7 @@ public class IntersectionSplitterTest {
     public void splitTest1() throws IOException {
         PolygonReader reader = new PolygonReader("/input3.txt");
         Polygon polygon = reader.read();
-        List<PriorityQueue<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
+        List<TreeSet<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
         List<Point> allPoints = new ArrayList<>();
         List<Segment> allSegments = new ArrayList<>();
         IntersectionSequence.pointsWithIntersectionsInDirection(polygon, directedIntersections, allPoints, allSegments);
@@ -33,7 +33,19 @@ public class IntersectionSplitterTest {
     public void splitTest2() throws IOException {
         PolygonReader reader = new PolygonReader("/input4.txt");
         Polygon polygon = reader.read();
-        List<PriorityQueue<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
+        List<TreeSet<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
+        List<Point> allPoints = new ArrayList<>();
+        List<Segment> allSegments = new ArrayList<>();
+        IntersectionSequence.pointsWithIntersectionsInDirection(polygon, directedIntersections, allPoints, allSegments);
+        List<Polygon> polygons = new IntersectionSplitter().split(allPoints, allSegments);
+        System.out.println(polygons);
+    }
+
+    @Test
+    public void splitTest3() throws IOException {
+        PolygonReader reader = new PolygonReader("/input5.txt");
+        Polygon polygon = reader.read();
+        List<TreeSet<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
         List<Point> allPoints = new ArrayList<>();
         List<Segment> allSegments = new ArrayList<>();
         IntersectionSequence.pointsWithIntersectionsInDirection(polygon, directedIntersections, allPoints, allSegments);

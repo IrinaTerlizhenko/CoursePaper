@@ -6,7 +6,7 @@ import by.bsu.polygon.entity.point.IntersectionPoint;
 import by.bsu.polygon.entity.point.Point;
 
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * @author User
@@ -15,11 +15,12 @@ import java.util.PriorityQueue;
 public class IntersectionSequence {
     static List<Point> pointsWithIntersectionsInDirection(
             Polygon polygon,
-            List<PriorityQueue<IntersectionPoint>> directedIntersections,
+            List<TreeSet<IntersectionPoint>> directedIntersections,
             List<Point> outPoints,
             List<Segment> outSegments) {
         List<Segment> segmentList = polygon.toSegmentList();
-        for (int i = 0; i < polygon.length(); i++) {
+
+        for (int i = 0; i < polygon.length(); ++i) {
             outPoints.add(segmentList.get(i).p);
             outPoints.addAll(directedIntersections.get(i));
             if (directedIntersections.get(i).isEmpty()) {
@@ -28,7 +29,8 @@ public class IntersectionSequence {
             Point prev = segmentList.get(i).p;
             int size = directedIntersections.get(i).size();
             while (!directedIntersections.get(i).isEmpty()) {
-                Point pt = directedIntersections.get(i).poll();
+                Point pt = directedIntersections.get(i).first();
+                directedIntersections.get(i).remove(pt);
                 outSegments.add(new Segment(prev, pt));
                 prev = pt;
             }

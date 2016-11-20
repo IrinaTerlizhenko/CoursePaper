@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * @author User
@@ -37,7 +37,7 @@ public class IntersectionSequenceTest {
         expected.add(p3);
         expected.add(p4);
         expected.add(new IntersectionPoint(0.5, 0.5, s1, s2));
-        List<PriorityQueue<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
+        List<TreeSet<IntersectionPoint>> directedIntersections = DirectedIntersection.findDirectedIntersections(polygon);
         List<Point> points = new ArrayList<>();
         IntersectionSequence.pointsWithIntersectionsInDirection(polygon, directedIntersections, points, new ArrayList<>());
         Assert.assertEquals(expected, points);
