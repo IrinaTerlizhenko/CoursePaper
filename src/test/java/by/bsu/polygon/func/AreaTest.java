@@ -2,7 +2,6 @@ package by.bsu.polygon.func;
 
 import by.bsu.polygon.entity.Polygon;
 import by.bsu.polygon.entity.point.Point;
-import by.bsu.polygon.func.AreaFinder;
 import org.junit.Assert;
 import org.junit.Test;
 

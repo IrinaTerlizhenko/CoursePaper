@@ -3,7 +3,6 @@ package by.bsu.polygon.func;
 import by.bsu.polygon.entity.Segment;
 import by.bsu.polygon.entity.point.IntersectionPoint;
 import by.bsu.polygon.entity.point.Point;
-import by.bsu.polygon.func.Intersections;
 import org.junit.Test;
 
 public class IntersectionTest {
