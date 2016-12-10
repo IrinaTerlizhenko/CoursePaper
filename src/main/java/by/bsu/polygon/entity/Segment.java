@@ -49,8 +49,6 @@ public class Segment implements Comparable<Segment> {
                 && (p.y >= min(seg.p.y, seg.q.y));
     }
 
-
-
     @Override
     public int compareTo(Segment o) {
         double x = max(min(p.x, q.x), min(o.p.x, o.q.x));

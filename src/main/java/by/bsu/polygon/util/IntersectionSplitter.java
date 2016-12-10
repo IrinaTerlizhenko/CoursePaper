@@ -18,12 +18,12 @@ public class IntersectionSplitter {
     public List<Polygon> split(List<Point> points, List<Segment> segments) {
         List<Polygon> list = new ArrayList<>();
         /**
-         * Every segment is a part of one by.bsu.polygon.
+         * Every segment is a part of one polygon.
          * Determines whether the segment was already used.
          */
         List<Boolean> used = new ArrayList<>(Arrays.asList(new Boolean[segments.size()]));
         /**
-         * The direction of the by.bsu.polygon bypass changes every segment, unless the endpoint of the segment is not an intersection point.
+         * The direction of the polygon bypass changes every segment, unless the endpoint of the segment is not an intersection point.
          * Counts the direction of every segment bypass.
          */
         int[] directions = countDirections(segments);
@@ -33,7 +33,7 @@ public class IntersectionSplitter {
             Polygon polygon = new Polygon();
             int i = findFirstUnused(used);
             /**
-             * The direction of the current by.bsu.polygon bypass.
+             * The direction of the current polygon bypass.
              * true == right, false == left.
              */
             boolean direction = (directions[i] & 1) == 0;

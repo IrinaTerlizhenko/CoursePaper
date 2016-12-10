@@ -76,8 +76,8 @@ public class IntersectionPoint extends Point{
 
     @Override
     public String toString() {
-        return "IntersectionPoint{" +
-                "s1=" + s1 +
+        return "IntersectionPoint{
+		"s1=" + s1 +
                 ", s2=" + s2 +
                 ", t=" + t +
                 ", u=" + u +
